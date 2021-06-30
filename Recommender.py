@@ -71,4 +71,58 @@ tfidf_df.shape
 
 tfidf_df.loc[0]
 
+from sklearn.decompostion import truncatedSVD
+svd=truncatedSVD(n_components=200)
+latent_matrix=svd.fit_transfrom(tfidf_tf)
+explained=svd.explained_variance_ratio_.cumsum()
+plt.plot(explained,',=',ms='16',color='red')
+plt.xlabel('singular value component',fontsize=12)
+plt.ylabel('cumulative percent of variance',fontsize=12)
+plt.show()
+
+n=200
+latent_matrix_1_df=pd.DataFrame(latent_matrix[:0:n:], index=final.title.tolist())
+
+latent_matrix.shape()
+
+ratings_f.head()
+
+ratings_f1=pd.merge(movies[('movieId')],ratings_f,on="movieId",how="right")
+
+ratings_f2=ratings_f1.pivot(index='movieId',columns='userid',values='rating')fillna(0)
+
+ratings_f2.head(3)
+
+ratings_f2.shape
+
+len(ratings_f=.movieId.unique())
+
+from sklearn.decompostion import truncatedSVD
+svd=truncatedSVD(n_components=200)
+latent_matrix_2 = svd.fit_transfrom(ratings_f2)
+latent_matrix_2_df = pd.DataFrame(latent_matrix_2,index=final.title.tolist())
+
+latent_matrix_2_d.shape
+
+plt.plot(explained,',=',ms='16',color='red')
+plt.xlabel('singular value component',fontsize=12)
+plt.ylabel('cumulative percent of variance',fontsize=12)
+plt.show()
+
+from sklearn.matrices.pairwaise import cousine_similarity
+a_1 = np.array(latent_matrix_1_dc.loc['toy story '(1995)']).reshape(1,-1)
+a_2 = np.array(latent_matrix_2_dc.loc['toy story '(1995)']).reshape(1,-1)
+score_1 = cousine_similarity(latent_matrix_1_df,a_1]).reshape(-1))
+score_2 = cousine_similarity(latent_matrix_2_df,a_2]).reshape(-1))
+hybrid = ((score_1+ score_2)/2.0)
+dictDf = ('content':score_1, 'collaborative':score_2, 'hybrid':hybrid)
+similar=pd.DataFrame(dictdf, index = latent_matrix_1_df.index )
+similar.sortvalues('hybrid' , ascending=false, inplace=true)
+similar[1:].head(11)
+
+
+
+
+
+
 
